@@ -9,10 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let images = ImageList.getImageList()
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        table.register(CustomCell.self, forCellReuseIdentifier: CustomCell.identifier)
         table.dataSource = self
         table.delegate = self
         table.translatesAutoresizingMaskIntoConstraints = false
@@ -30,11 +31,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .white
         
         addSubviews()
-        tableView.delegate = self
-        tableView.dataSource = self
         setUpConstraints()
     }
     
