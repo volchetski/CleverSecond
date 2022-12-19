@@ -12,14 +12,13 @@ class CustomCell: UITableViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .green
+        label.font = .boldSystemFont(ofSize: 25)
         label.textColor = .label
         return label
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .red
         label.textColor = .label
         return label
     }()
@@ -27,8 +26,8 @@ class CustomCell: UITableViewCell {
     private lazy var itemImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
-        image.image = UIImage(named: "bolt")
-        image.clipsToBounds = true
+        image.layer.cornerRadius = self.frame.height / 2
+        image.layer.masksToBounds = true
         image.backgroundColor = .gray
         return image
     }()
@@ -44,6 +43,13 @@ class CustomCell: UITableViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    public func configure(text: String, descriptionText: String, imageName: String) {
+        nameLabel.text = text
+        descriptionLabel.text = descriptionText
+        itemImage.image = UIImage(named: imageName)
+        
     }
     
     override func layoutSubviews() {
