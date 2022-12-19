@@ -9,7 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let images = ImageList.getImageList()
+    let namesOfItems = ["account", "bolt", "contactless", "event", "language", "nightlight", "paid", "perm", "settings", "verified"]
+     let descriptionsOfItems =  ["The first item in the table", "The second item in the table", "The third item in the table", "The fourth item in the table", "The fifth item in the table", "The sixth item in the table", "The seventh item in the table", "The eighth item in the table", "The nineth item in the table", "The tenth item in the table"]
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
