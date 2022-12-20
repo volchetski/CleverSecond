@@ -12,7 +12,6 @@ class CustomCell: UITableViewCell {
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 25)
         label.textColor = .label
         return label
     }()
@@ -25,10 +24,9 @@ class CustomCell: UITableViewCell {
     
     private lazy var itemImage: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .center
         image.layer.cornerRadius = self.frame.height / 2
         image.layer.masksToBounds = true
-        image.preferredSymbolConfiguration = .init(pointSize: 2)
         image.backgroundColor = .gray
         return image
     }()
