@@ -9,11 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let item = Item.getItem()
-    public lazy var arrayOfImageName = [String]()
-    public var itemName = ""
-    public var itemDescription = ""
     
+    private let item: [Item] = [
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "account"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "bolt"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "contactless"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "event"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "language"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "nightlight"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "paid"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "perm"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "settings"),
+        Item(itemName: itemName, itemDescription: itemDescription, imageName: "verified")
+    ]
+    
+    public lazy var arrayWithAllItems = [Item]()
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
@@ -44,6 +54,12 @@ class ViewController: UIViewController {
         repeatedItemInArray()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     private func setUI() {
         view.backgroundColor = .white
     }
@@ -70,9 +86,7 @@ class ViewController: UIViewController {
     private func repeatedItemInArray() {
         for _ in 1...100 {
             for item in item {
-                arrayOfImageName.append(item.imageName)
-                itemName = item.itemName
-                itemDescription = item.itemDescription
+                arrayWithAllItems.append(item)
             }
         }
     }
