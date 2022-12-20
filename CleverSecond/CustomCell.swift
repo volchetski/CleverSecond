@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomCell: UITableViewCell {
-    static let identifier = "CustomTableViewCell"
+    static let identifier = cellIdentifier
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
@@ -34,7 +34,7 @@ class CustomCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
+        
         contentView.addSubview(nameLabel)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(itemImage)
