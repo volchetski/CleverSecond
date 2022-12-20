@@ -9,14 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-   private let item = Item.getItem()
+    private let item = Item.getItem()
     public lazy var arrayOfImageName = [String]()
     public var itemName = ""
     public var itemDescription = ""
     
-    
-//    let namesOfItems = ["account", "bolt", "contactless", "event", "language", "nightlight", "paid", "perm", "settings", "verified"]
-//     let descriptionsOfItems =  ["The first item in the table", "The second item in the table", "The third item in the table", "The fourth item in the table", "The fifth item in the table", "The sixth item in the table", "The seventh item in the table", "The eighth item in the table", "The nineth item in the table", "The tenth item in the table"]
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
@@ -31,19 +28,25 @@ class ViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Edit", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20)
-        button.tintColor = .label
+        button.backgroundColor = .gray
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(editTableView), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUI()
         addSubviews()
         setUpConstraints()
         repeatedItemInArray()
     }
     
+    private func setUI() {
+        view.backgroundColor = .white
+    }
     
     private func addSubviews() {
         view.addSubview(tableView)
@@ -57,7 +60,7 @@ class ViewController: UIViewController {
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: editButton.topAnchor),
-        
+            
             editButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40),
             editButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -60),
             editButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
@@ -72,6 +75,10 @@ class ViewController: UIViewController {
                 itemDescription = item.itemDescription
             }
         }
+    }
+    
+    @objc func editTableView() {
+        tableView.isEditing = !tableView.isEditing
     }
 }
 
