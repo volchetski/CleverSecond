@@ -19,7 +19,7 @@ class CustomCell: UITableViewCell {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .label
+        label.textColor = .systemGray
         return label
     }()
     
@@ -28,6 +28,7 @@ class CustomCell: UITableViewCell {
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = self.frame.height / 2
         image.layer.masksToBounds = true
+        image.preferredSymbolConfiguration = .init(pointSize: 2)
         image.backgroundColor = .gray
         return image
     }()
@@ -35,7 +36,7 @@ class CustomCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .orange
+
         contentView.addSubview(nameLabel)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(itemImage)
