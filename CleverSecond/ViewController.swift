@@ -9,8 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let namesOfItems = ["account", "bolt", "contactless", "event", "language", "nightlight", "paid", "perm", "settings", "verified"]
-     let descriptionsOfItems =  ["The first item in the table", "The second item in the table", "The third item in the table", "The fourth item in the table", "The fifth item in the table", "The sixth item in the table", "The seventh item in the table", "The eighth item in the table", "The nineth item in the table", "The tenth item in the table"]
+   private let item = Item.getItem()
+    public lazy var arrayOfImageName = [String]()
+    public var itemName = ""
+    public var itemDescription = ""
+    
+    
+//    let namesOfItems = ["account", "bolt", "contactless", "event", "language", "nightlight", "paid", "perm", "settings", "verified"]
+//     let descriptionsOfItems =  ["The first item in the table", "The second item in the table", "The third item in the table", "The fourth item in the table", "The fifth item in the table", "The sixth item in the table", "The seventh item in the table", "The eighth item in the table", "The nineth item in the table", "The tenth item in the table"]
     
     private lazy var tableView: UITableView = {
         let table = UITableView()
@@ -35,6 +41,7 @@ class ViewController: UIViewController {
         
         addSubviews()
         setUpConstraints()
+        repeatedItemInArray()
     }
     
     
@@ -55,6 +62,16 @@ class ViewController: UIViewController {
             editButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -60),
             editButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             editButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
+    }
+    
+    private func repeatedItemInArray() {
+        for _ in 1...100 {
+            for item in item {
+                arrayOfImageName.append(item.imageName)
+                itemName = item.itemName
+                itemDescription = item.itemDescription
+            }
+        }
     }
 }
 
