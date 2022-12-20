@@ -8,24 +8,7 @@
 import Foundation
 
 struct Item {
-    let itemName = "Title"
-    let itemDescription = "Description"
+    let itemName: String
+    let itemDescription: String
     let imageName: String
-}
-
-extension Item {
-    static func getItem() -> [Item] {
-        [
-            Item(imageName: "account"),
-            Item(imageName: "bolt"),
-            Item(imageName: "contactless"),
-            Item(imageName: "event"),
-            Item(imageName: "language"),
-            Item(imageName: "nightlight"),
-            Item(imageName: "paid"),
-            Item(imageName: "perm"),
-            Item(imageName: "settings"),
-            Item(imageName: "verified")
-        ]
-    }
 }
